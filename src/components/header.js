@@ -10,7 +10,7 @@ export default function Header() {
       <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-2">
         <Link
           href="/login"
-          className="mr-1 bg-red-500 px-5 py-3 rounded-lg text-white font-bold uppercase mr-1"
+          className="bg-red-500 px-5 py-3 rounded-lg text-white font-bold uppercase mr-1"
         >
           Iniciar Sesión
         </Link>
