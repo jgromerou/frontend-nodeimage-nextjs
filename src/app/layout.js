@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Head from 'next/head';
 import Header from './../components/header';
+import { AuthProvider } from '@/providers/authProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +18,7 @@ export default function RootLayout({ children }) {
       >
         <div className="container mx-auto">
           <Header />
-          {children}
+          <AuthProvider>{children}</AuthProvider>
         </div>
       </body>
     </html>
