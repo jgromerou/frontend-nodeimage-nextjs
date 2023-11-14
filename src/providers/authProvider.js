@@ -21,16 +21,28 @@ export const AuthProvider = ({ children }) => {
   const registrarUsuario = async (datos) => {
     try {
       const respuesta = await dashAxios.post('api/usuarios', datos);
-      console.log(respuesta);
+      dispatch({
+        type: types.auth.registroExitoso,
+        payload: respuesta.data.msg,
+      });
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: types.auth.registroExitoso,
+        payload: error.response.data.msg,
+      });
     }
+    //Limpia la Alerta después de 2,5 segundos
+    setTimeout(() => {
+      dispatch({
+        type: types.auth.limpiarAlerta,
+      });
+    }, 2500);
   };
 
   //Usuario autenticado
   const usuarioAutenticado = (nombre) => {
     dispatch({
-      type: types.usuarioAutenticado,
+      type: types.auth.usuarioAutenticado,
       payload: nombre,
     });
   };

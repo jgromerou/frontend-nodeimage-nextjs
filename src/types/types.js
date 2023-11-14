@@ -3,6 +3,8 @@ export const types = {
     login: '[AUTH] - LOGIN',
     error: '[AUTH] - ERROR',
     usuarioAutenticado: '[AUTH] - USUARIO_AUTENTICADO',
-    //registerUser: '[AUTH] - REGISTERUSER'
+    registroExitoso: '[AUTH] - REGISTRO_EXITOSO',
+    registroError: '[AUTH] - REGISTRO_ERROR',
+    limpiarAlerta: '[AUTH] - LIMPIAR_ALERTA',
   },
 };

@@ -1,5 +1,6 @@
 'use client';
 
+import Alerta from '@/components/alerta';
 import { AuthContext } from '@/contexts/authContext';
 import { useFormik } from 'formik';
 import { useContext, useEffect } from 'react';
@@ -8,7 +9,7 @@ import * as Yup from 'yup';
 export default function CrearCuenta() {
   //Formulario y validación de Formik y yup
 
-  const { registrarUsuario } = useContext(AuthContext);
+  const { registrarUsuario, mensaje } = useContext(AuthContext);
 
   // useEffect(() => {
   //   setTimeout(() => {
@@ -36,6 +37,7 @@ export default function CrearCuenta() {
     onSubmit: (values) => {
       registrarUsuario(values);
       //alert(JSON.stringify(values, null, 2));
+      formik.resetForm();
     },
   });
 
@@ -44,6 +46,9 @@ export default function CrearCuenta() {
       <h2 className="text-4xl font-sans font-bold text-gray-800 text-center my-4">
         Crear Cuenta
       </h2>
+
+      {mensaje && <Alerta />}
+
       <div className="flex justify-center mt-5">
         <div className="w-full max-w-lg">
           <form
