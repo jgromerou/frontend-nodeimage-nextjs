@@ -1,6 +1,6 @@
 'use client';
 
-import Alerta from '@/components/alerta';
+import Alerta from '@/components/Alerta';
 import { AuthContext } from '@/contexts/authContext';
 import { useFormik } from 'formik';
 import { useContext, useEffect } from 'react';

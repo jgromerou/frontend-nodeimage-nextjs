@@ -1,11 +1,26 @@
 'use client';
 
+import Alerta from '@/components/Alerta';
+import { AuthContext } from '@/contexts/authContext';
 import { useFormik } from 'formik';
+import { useContext, useEffect } from 'react';
 import * as Yup from 'yup';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
-  //Formulario y validación de Formik y yup
+  //definir el context
+  const { autenticarUsuario, autenticado, mensaje } = useContext(AuthContext);
 
+  //Next router
+  const router = useRouter();
+
+  useEffect(() => {
+    console.log(autenticado);
+    if (autenticado) {
+      router.push('/');
+    }
+  }, [autenticado]);
+  //Formulario y validación de Formik y yup
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -21,15 +36,18 @@ export default function Login() {
         .min(6, 'La contraseña debe contener al menos 6 caracteres'),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      //alert(JSON.stringify(values, null, 2));
+      autenticarUsuario(values);
+      //formik.resetForm();
     },
   });
 
   return (
     <main className="md:w-4/5 xl:w-3/5 mx-auto mb-32">
       <h2 className="text-4xl font-sans font-bold text-gray-800 text-center my-4">
-        Crear Cuenta
+        Iniciar Sesión
       </h2>
+      {mensaje && <Alerta />}
       <div className="flex justify-center mt-5">
         <div className="w-full max-w-lg">
           <form
@@ -85,7 +103,7 @@ export default function Login() {
             <input
               type="submit"
               className="bg-red-500 hover:bg-gray-900 w-full p-2 text-white uppercase font-bold"
-              value="Crear Cuenta"
+              value="Ingresar"
             />
           </form>
         </div>

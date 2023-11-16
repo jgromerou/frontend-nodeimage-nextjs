@@ -17,8 +17,10 @@ export default function RootLayout({ children }) {
         className={`${inter.className} bg-gray-100 min-h-screen`}
       >
         <div className="container mx-auto">
-          <Header />
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <Header />
+            {children}
+          </AuthProvider>
         </div>
       </body>
     </html>
