@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
     autenticado: null,
     usuario: null,
     mensaje: null,
+    paginaSinLogin: true,
   };
 
   //Definir el reducer

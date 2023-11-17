@@ -6,6 +6,8 @@ export default (state, action) => {
       return {
         ...state,
         usuario: action.payload,
+        autenticado: true,
+        paginaSinLogin: false,
       };
 
     case types.auth.registroExitoso:
@@ -36,6 +38,7 @@ export default (state, action) => {
         usuario: null,
         token: null,
         autenticado: null,
+        paginaSinLogin: true,
       };
 
     default:
